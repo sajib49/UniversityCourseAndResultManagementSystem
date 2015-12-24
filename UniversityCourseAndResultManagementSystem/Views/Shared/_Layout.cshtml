@@ -8,26 +8,71 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+        </div>
+        @*<div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
+            </div>*@
+        <!-- Single button -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Home <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+
+
+    <!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
+    <div id="wowslider-container1">
+        <div class="ws_images">
+            <ul>
+                <li><img src="../../Image/Slide/SlideImage/1.jpg" alt="Main Campus" title="Main Campus" id="wows1_0" /></li>
+                <li><img src="../../Image/Slide/SlideImage/2.jpg" alt="Computer Lab" title="Computer Lab" id="wows1_1" /></li>
+                <li><img src="../../Image/Slide/SlideImage/3.jpg" alt="Software Lab" title="Software Lab" id="wows1_2" /></li>
+                <li><img src="../../Image/Slide/SlideImage/4.jpg" alt="Our Graduate" title="Our Graduate" id="wows1_3" /></li>
+                <li><img src="../../Image/Slide/SlideImage/5.jpg" alt="University Bus" title="University Bus" id="wows1_4" /></li>
+                <li><img src="../../Image/Slide/SlideImage/6.jpg" alt="CSE Department" title="CSE Department" id="wows1_5" /></li>
+            </ul>
+        </div>
+        <div class="ws_bullets">
+            <div>
+                <a href="#" title="Main Campus"><span><img src="../../Image/Slide/SlideImage/1.jpg" alt="Main Campus" />1</span></a>
+                <a href="#" title="Computer Lab"><span><img src="../../Image/Slide/SlideImage/2.jpg" alt="Computer Lab" />2</span></a>
+                <a href="#" title="Software Lab"><span><img src="../../Image/Slide/SlideImage/3.jpg" alt="Software Lab" />3</span></a>
+                <a href="#" title="Our Graduate"><span><img src="../../Image/Slide/SlideImage/4.jpg" alt="Our Graduate" />4</span></a>
+                <a href="#" title="University Bus"><span><img src="../../Image/Slide/SlideImage/5.jpg" alt="University Bus" />5</span></a>
+                <a href="#" title="CSE Department"><span><img src="../../Image/Slide/SlideImage/6.jpg" alt="CSE Department" />6</span></a>
+                
             </div>
         </div>
+        <div class="ws_shadow"></div>
     </div>
-    <div class="container body-content">
+<!-- End WOWSlider.com BODY section -->
+   
+<div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
@@ -37,6 +82,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Content/slideScripts")
+    @Scripts.Render("~/Content/slideStyle")
     @RenderSection("scripts", required: false)
 </body>
 </html>
