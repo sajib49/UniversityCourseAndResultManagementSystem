@@ -23,11 +23,13 @@ namespace UniversityCourseAndResultManagementSystem
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/script.js",
                       "~/Scripts/wowslider.js",
+                      //"~/Scripts/wowslider.mod.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/style.css",
+                      "~/Content/style.mod.css",
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/slideStyle").Include(

@@ -6,111 +6,119 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using UniversityCourseAndResultManagementSystem.Models;
 
-namespace UniversityCourseAndResultManagementSystem.Controllers
+namespace UniversityCourseAndResultManagementSystem.Models
 {
-    public class DepartmentsController : Controller
+    public class CoursesController : Controller
     {
         private ProjectDb db = new ProjectDb();
 
-        // GET: Departments
+        // GET: Courses
         public ActionResult Index()
         {
-            return View(db.Departments.ToList());
+            var courses = db.Courses.Include(c => c.Department).Include(c => c.Semester);
+            return View(courses.ToList());
         }
 
-        // GET: Departments/Details/5
+        // GET: Courses/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Department department = db.Departments.Find(id);
-            if (department == null)
+            Course course = db.Courses.Find(id);
+            if (course == null)
             {
                 return HttpNotFound();
             }
-            return View(department);
+            return View(course);
         }
 
-        // GET: Departments/Create
+        // GET: Courses/Create
         public ActionResult Create()
         {
+            ViewBag.DeptId = new SelectList(db.Departments, "DeptId", "DeptCode");
+            ViewBag.SemesterId = new SelectList(db.Semesters, "SemesterId", "SemesterName");
             return View();
         }
 
-        // POST: Departments/Create
+        // POST: Courses/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DeptId,DeptCode,DeptName")] Department department)
+        public ActionResult Create([Bind(Include = "CourseId,CourseCode,CourseName,Creadit,Description,DeptId,SemesterId")] Course course)
         {
             if (ModelState.IsValid)
             {
-                db.Departments.Add(department);
+                db.Courses.Add(course);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(department);
+            ViewBag.DeptId = new SelectList(db.Departments, "DeptId", "DeptCode", course.DeptId);
+            ViewBag.SemesterId = new SelectList(db.Semesters, "SemesterId", "SemesterName", course.SemesterId);
+            return View(course);
         }
 
-        // GET: Departments/Edit/5
+        // GET: Courses/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Department department = db.Departments.Find(id);
-            if (department == null)
+            Course course = db.Courses.Find(id);
+            if (course == null)
             {
                 return HttpNotFound();
             }
-            return View(department);
+            ViewBag.DeptId = new SelectList(db.Departments, "DeptId", "DeptCode", course.DeptId);
+            ViewBag.SemesterId = new SelectList(db.Semesters, "SemesterId", "SemesterName", course.SemesterId);
+            return View(course);
         }
 
-        // POST: Departments/Edit/5
+        // POST: Courses/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DeptId,DeptCode,DeptName")] Department department)
+        public ActionResult Edit([Bind(Include = "CourseId,CourseCode,CourseName,Creadit,Description,DeptId,SemesterId")] Course course)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(department).State = EntityState.Modified;
+                db.Entry(course).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(department);
+            ViewBag.DeptId = new SelectList(db.Departments, "DeptId", "DeptCode", course.DeptId);
+            ViewBag.SemesterId = new SelectList(db.Semesters, "SemesterId", "SemesterName", course.SemesterId);
+            return View(course);
         }
 
-        // GET: Departments/Delete/5
+        // GET: Courses/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Department department = db.Departments.Find(id);
-            if (department == null)
+            Course course = db.Courses.Find(id);
+            if (course == null)
             {
                 return HttpNotFound();
             }
-            return View(department);
+            return View(course);
         }
 
-        // POST: Departments/Delete/5
+        // POST: Courses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Department department = db.Departments.Find(id);
-            db.Departments.Remove(department);
+            Course course = db.Courses.Find(id);
+            db.Courses.Remove(course);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

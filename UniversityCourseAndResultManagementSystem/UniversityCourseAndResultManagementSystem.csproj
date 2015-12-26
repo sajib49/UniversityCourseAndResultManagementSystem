@@ -122,17 +122,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512231449218_initial.cs" />
-    <Compile Include="Migrations\201512231449218_initial.Designer.cs">
-      <DependentUpon>201512231449218_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512231536541_EditDepartmentClass.cs" />
-    <Compile Include="Migrations\201512231536541_EditDepartmentClass.Designer.cs">
-      <DependentUpon>201512231536541_EditDepartmentClass.cs</DependentUpon>
+    <Compile Include="Migrations\201512261925273_initialCommittt.cs" />
+    <Compile Include="Migrations\201512261925273_initialCommittt.Designer.cs">
+      <DependentUpon>201512261925273_initialCommittt.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\CoursesController.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\ProjectDb.cs" />
+    <Compile Include="Models\Semester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -140,8 +139,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\SlideStyle\style.css" />
-    <Content Include="Content\SlideStyle\style.mod.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\style.mod.css" />
     <Content Include="favicon.ico" />
@@ -189,6 +186,18 @@
     <Content Include="Scripts\wowslider.js" />
     <Content Include="Scripts\wowslider.mod.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Shared\engine1\arrows.png" />
+    <Content Include="Views\Shared\engine1\bg.png" />
+    <Content Include="Views\Shared\engine1\bullet.png" />
+    <Content Include="Views\Shared\engine1\jquery.js" />
+    <Content Include="Views\Shared\engine1\pause.png" />
+    <Content Include="Views\Shared\engine1\play.png" />
+    <Content Include="Views\Shared\engine1\script.js" />
+    <Content Include="Views\Shared\engine1\style.css" />
+    <Content Include="Views\Shared\engine1\style.mod.css" />
+    <Content Include="Views\Shared\engine1\triangle.png" />
+    <Content Include="Views\Shared\engine1\wowslider.js" />
+    <Content Include="Views\Shared\engine1\wowslider.mod.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -208,6 +217,11 @@
     <Content Include="Views\Departments\Details.cshtml" />
     <Content Include="Views\Departments\Edit.cshtml" />
     <Content Include="Views\Departments\Index.cshtml" />
+    <Content Include="Views\Courses\Create.cshtml" />
+    <Content Include="Views\Courses\Delete.cshtml" />
+    <Content Include="Views\Courses\Details.cshtml" />
+    <Content Include="Views\Courses\Edit.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -217,11 +231,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512231449218_initial.resx">
-      <DependentUpon>201512231449218_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512231536541_EditDepartmentClass.resx">
-      <DependentUpon>201512231536541_EditDepartmentClass.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512261925273_initialCommittt.resx">
+      <DependentUpon>201512261925273_initialCommittt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,13 +7,13 @@ namespace UniversityCourseAndResultManagementSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class EditDepartmentClass : IMigrationMetadata
+    public sealed partial class initialCommittt : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(EditDepartmentClass));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initialCommittt));
         
         string IMigrationMetadata.Id
         {
-            get { return "201512231536541_EditDepartmentClass"; }
+            get { return "201512261925273_initialCommittt"; }
         }
         
         string IMigrationMetadata.Source

@@ -299,7 +299,7 @@
 @-webkit-keyframes wsBasic{0%{left:-0%} 8.46%{left:-0%} 16.67%{left:-100%} 25.12%{left:-100%} 33.33%{left:-200%} 41.79%{left:-200%} 50%{left:-300%} 58.46%{left:-300%} 66.67%{left:-400%} 75.12%{left:-400%} 83.33%{left:-500%} 91.79%{left:-500%} }
 
 #wowslider-container1  .ws_shadow{
-	background-image: url(./bg.png);
+	background-image: url(../Image/Slide/ToolsImage/bg.png);
 	background-repeat: no-repeat;
 	background-size:100%;
 	position:absolute;

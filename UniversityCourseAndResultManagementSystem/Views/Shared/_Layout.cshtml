@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -28,15 +28,22 @@
         <!-- Single button -->
         <div class="btn-group">
             <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Home <span class="caret"></span>
+                Department <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("All Departments", "Index", "Departments")</li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#">Something else here</a></li>
+                <li>@Html.ActionLink("Create Department", "Create", "Departments")</li>
+            </ul>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Student <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink("All Departments", "Index", "Departments")</li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li>@Html.ActionLink("Create Department", "Create", "Departments")</li>
             </ul>
         </div>
 
@@ -74,7 +81,7 @@
    
 <div class="container body-content">
         @RenderBody()
-        <hr />
+        @*<hr />*@
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
