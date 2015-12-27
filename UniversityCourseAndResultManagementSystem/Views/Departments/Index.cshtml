@@ -9,31 +9,37 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
+<table @*class="table table-condensed table-bordered table-striped table-hover table-responsive"*@ id="example" class="display" cellspacing="0" width="100%">
+    <thead>
+    <tr class="danger">
         <th>
             @Html.DisplayNameFor(model => model.DeptCode)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DeptName)
         </th>
-        <th></th>
+        <th>Action</th>
     </tr>
+    </thead>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeptCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeptName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DeptId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DeptId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DeptId })
-        </td>
-    </tr>
-}
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeptCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeptName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.DeptId}) |
+                @Html.ActionLink("Details", "Details", new {id = item.DeptId}) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.DeptId})
+            </td>
+        </tr>
+    }
+    </tbody>
 
 </table>
+

@@ -36,8 +36,15 @@ namespace UniversityCourseAndResultManagementSystem
                     "~/Content/SlideStyle/style.css"
                 ));
             bundles.Add(new StyleBundle("~/Content/slideScripts").Include(
-                 "~/Scripts/SlideScripts/script.js",
-                 "~/Scripts/SlideScripts/wowslider.js"
+                "~/Scripts/SlideScripts/script.js",
+                "~/Scripts/SlideScripts/wowslider.js"
+                ));
+               bundles.Add(new StyleBundle("~/Content/dataTablesDesigner").Include(
+                "~/Content/DataTables/css/jquery.dataTables.min.css"
+                ));
+
+            bundles.Add(new StyleBundle("~/Scripts/dataTablesScripts").Include(
+                "~/Scripts/DataTables/jquery.dataTables.min.js"
     ));
 
         }
