@@ -119,6 +119,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -126,12 +127,19 @@
     <Compile Include="Migrations\201512261925273_initialCommittt.Designer.cs">
       <DependentUpon>201512261925273_initialCommittt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512270923264_TeacherDesignationClassAdded.cs" />
+    <Compile Include="Migrations\201512270923264_TeacherDesignationClassAdded.Designer.cs">
+      <DependentUpon>201512270923264_TeacherDesignationClassAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
-    <Compile Include="Models\CoursesController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Designation.cs" />
     <Compile Include="Models\ProjectDb.cs" />
     <Compile Include="Models\Semester.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\Teacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +246,7 @@
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\style.css" />
     <Content Include="Content\style.mod.css" />
+    <Content Include="Content\swimbi.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -336,6 +345,7 @@
     <Content Include="Scripts\SlideScripts\script.js" />
     <Content Include="Scripts\SlideScripts\wowslider.js" />
     <Content Include="Scripts\SlideScripts\wowslider.mod.js" />
+    <Content Include="Scripts\swimbi.js" />
     <Content Include="Scripts\wowslider.js" />
     <Content Include="Scripts\wowslider.mod.js" />
     <Content Include="Scripts\_references.js" />
@@ -375,6 +385,11 @@
     <Content Include="Views\Courses\Details.cshtml" />
     <Content Include="Views\Courses\Edit.cshtml" />
     <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\Teachers\Create.cshtml" />
+    <Content Include="Views\Teachers\Delete.cshtml" />
+    <Content Include="Views\Teachers\Details.cshtml" />
+    <Content Include="Views\Teachers\Edit.cshtml" />
+    <Content Include="Views\Teachers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -386,6 +401,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201512261925273_initialCommittt.resx">
       <DependentUpon>201512261925273_initialCommittt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512270923264_TeacherDesignationClassAdded.resx">
+      <DependentUpon>201512270923264_TeacherDesignationClassAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

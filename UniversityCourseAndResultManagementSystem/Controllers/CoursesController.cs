@@ -38,7 +38,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
         // GET: Courses/Create
         public ActionResult Create()
         {
-            ViewBag.DeptId = new SelectList(db.Departments, "DeptId", "DeptCode");
+            ViewBag.DeptId = new SelectList(db.Departments, "DeptId", "DeptName");
             ViewBag.SemesterId = new SelectList(db.Semesters, "SemesterId", "SemesterName");
             return View();
         }
@@ -57,7 +57,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DeptId = new SelectList(db.Departments, "DeptId", "DeptCode", course.DeptId);
+            ViewBag.DeptId = new SelectList(db.Departments, "DeptId", "DeptName", course.DeptId);
             ViewBag.SemesterId = new SelectList(db.Semesters, "SemesterId", "SemesterName", course.SemesterId);
             return View(course);
         }

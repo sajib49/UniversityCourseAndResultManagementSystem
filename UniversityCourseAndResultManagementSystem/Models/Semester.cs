@@ -8,6 +8,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
 {
     public class Semester
     {
+        [Key]
         [Display(Name = "Semester")]
         public int SemesterId { get; set; }
 

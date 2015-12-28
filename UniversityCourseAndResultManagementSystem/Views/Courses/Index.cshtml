@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table @*class="table table-condensed table-bordered table-striped table-hover table-responsive"*@ id="example" class="display" cellspacing="0" width="100%">
+<table @*class="table table-condensed table-bordered table-striped table-hover table-responsive"*@ id="example" class="display" cellspacing="0">
     <thead>
     <tr>
         <th>
@@ -30,7 +30,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        <th></th>
+        <th>
+            Action
+        </th>
     </tr>
     </thead>
 

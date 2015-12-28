@@ -23,7 +23,9 @@ namespace UniversityCourseAndResultManagementSystem.Models
         [Required(ErrorMessage = "Please Enter Department Name")]
         public string DeptName { get; set; }
 
-        public virtual ICollection<Course> Courses { get; set; } 
+        public virtual ICollection<Course> Courses { get; set; }
+        public virtual ICollection<Teacher> Teachers { get; set; }
+        public virtual ICollection<Student> Students { get; set; } 
 
 
     }

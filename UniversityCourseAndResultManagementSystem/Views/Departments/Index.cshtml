@@ -18,7 +18,9 @@
         <th>
             @Html.DisplayNameFor(model => model.DeptName)
         </th>
-        <th>Action</th>
+        <th>
+            Action
+        </th>
     </tr>
     </thead>
 
@@ -33,10 +35,19 @@
                 @Html.DisplayFor(modelItem => item.DeptName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {id = item.DeptId}) |
+                @*@Html.ActionLink("Edit", "Edit", new {id = item.DeptId}) |
                 @Html.ActionLink("Details", "Details", new {id = item.DeptId}) |
-                @Html.ActionLink("Delete", "Delete", new {id = item.DeptId})
-            </td>
+                @Html.ActionLink("Delete", "Delete", new {id = item.DeptId})*@
+
+                <a href="@Url.Action("Edit", "Departments", new {id = item.DeptId})">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </a>|
+                <a href="@Url.Action("Details", "Departments", new { id = item.DeptId })">
+                    <span class="glyphicon glyphicon-th"></span>
+                </a>
+                <a href="@Url.Action("Delete", "Departments", new { id = item.DeptId })">
+                    <span class="glyphicon glyphicon-trash"></span>
+</td>
         </tr>
     }
     </tbody>
