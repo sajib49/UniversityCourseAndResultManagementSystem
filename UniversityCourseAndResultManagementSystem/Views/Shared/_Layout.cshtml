@@ -7,9 +7,10 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/dataTablesDesigner")
+
     <link href="~/Content/swimbi.css" rel="stylesheet" />
 </head>
-<body>
+<body style="background:fixed url(https://pcbx.us/bexy.jpg)">
 frsgf
 <div id="swimbi">
     <ul>
@@ -43,7 +44,8 @@ frsgf
         <li>
             <a data-icon="f19d" target="_blank">&nbsp; Student </a>
             <ul>
-                <li> <a data-icon="f067" href="#"> Student Entry </a></li>
+                <li> <a data-icon="f067" href="@Url.Action("Create","Students")"> Student Entry </a></li>
+                <li> <a data-icon="f002" href="@Url.Action("Index","Students")"> Student List </a></li>
                 <li> <a data-icon="f045" href="#"> Enroll In Course </a></li>
                 <li> <a data-icon="f1ec"> Save Result </a></li>
                 <li> <a data-icon="f06e" href="#"> View Result </a></li>

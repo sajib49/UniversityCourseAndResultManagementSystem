@@ -119,6 +119,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -130,6 +131,14 @@
     <Compile Include="Migrations\201512270923264_TeacherDesignationClassAdded.cs" />
     <Compile Include="Migrations\201512270923264_TeacherDesignationClassAdded.Designer.cs">
       <DependentUpon>201512270923264_TeacherDesignationClassAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512281807067_StudentClassAdded.cs" />
+    <Compile Include="Migrations\201512281807067_StudentClassAdded.Designer.cs">
+      <DependentUpon>201512281807067_StudentClassAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512290750058_studentReg.No is now not require.cs" />
+    <Compile Include="Migrations\201512290750058_studentReg.No is now not require.Designer.cs">
+      <DependentUpon>201512290750058_studentReg.No is now not require.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
@@ -390,6 +399,11 @@
     <Content Include="Views\Teachers\Details.cshtml" />
     <Content Include="Views\Teachers\Edit.cshtml" />
     <Content Include="Views\Teachers\Index.cshtml" />
+    <Content Include="Views\Students\Create.cshtml" />
+    <Content Include="Views\Students\Delete.cshtml" />
+    <Content Include="Views\Students\Details.cshtml" />
+    <Content Include="Views\Students\Edit.cshtml" />
+    <Content Include="Views\Students\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -404,6 +418,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512270923264_TeacherDesignationClassAdded.resx">
       <DependentUpon>201512270923264_TeacherDesignationClassAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512281807067_StudentClassAdded.resx">
+      <DependentUpon>201512281807067_StudentClassAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512290750058_studentReg.No is now not require.resx">
+      <DependentUpon>201512290750058_studentReg.No is now not require.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

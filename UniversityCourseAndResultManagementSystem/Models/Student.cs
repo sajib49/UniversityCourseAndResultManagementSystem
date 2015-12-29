@@ -31,7 +31,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
         [Required(ErrorMessage = "Registration date is required!")]
         public DateTime RegDate { get; set; }
 
-        [Display(Name = "Display")]
+        [Display(Name = "Address")]
         [DataType(DataType.MultilineText)]
         [Required(ErrorMessage = "Student address is required!")]
         public string Address { get; set; }
@@ -40,7 +40,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
         public int DeptId { get; set; }
 
         [Display(Name = "Registration Number")]
-        [Required]
+        //[Required]
         public string RegNo { get; set; }
 
         [ForeignKey("DeptId")]
