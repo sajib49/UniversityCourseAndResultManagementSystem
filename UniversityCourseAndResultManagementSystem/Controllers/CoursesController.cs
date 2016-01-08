@@ -131,5 +131,25 @@ namespace UniversityCourseAndResultManagementSystem.Models
             }
             base.Dispose(disposing);
         }
+
+        public JsonResult CourseCodeExits(string coursecode)
+        {
+            var aCourse = db.Courses.FirstOrDefault(x => x.CourseCode == coursecode);
+            if (aCourse==null)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult CourseNameExits(string coursename)
+        {
+            var aCourse = db.Courses.FirstOrDefault(x => x.CourseName == coursename);
+            if (aCourse == null)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
     }
 }

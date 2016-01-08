@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Core.Common.CommandTrees;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace UniversityCourseAndResultManagementSystem.Models
 {
@@ -21,6 +22,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
 
         [Required(ErrorMessage = "Student email address is required!")]
         [EmailAddress(ErrorMessage = "Invalid Email Address"),StringLength(50)]
+        [Remote("StudentEmailExits","Students",ErrorMessage = "Email already exits.Try with another email.")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Student contact no is required!")]

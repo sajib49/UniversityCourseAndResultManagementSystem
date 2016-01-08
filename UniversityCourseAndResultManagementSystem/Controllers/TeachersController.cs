@@ -132,5 +132,15 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public JsonResult TeacherEmailExits(string email)
+        {
+            var aTeacher = db.Teachers.FirstOrDefault(x => x.Email == email);
+            if (aTeacher == null)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
     }
 }

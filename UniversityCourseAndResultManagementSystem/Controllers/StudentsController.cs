@@ -67,12 +67,12 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
 
             Department aDepartment = db.Departments.FirstOrDefault(aDept => aDept.DeptId == aStudent.DeptId);
             int countDeptStd =
-                db.Students.Count(aStd => (aStd.DeptId == aStudent.DeptId) && aStd.RegDate.Year == aStudent.RegDate.Year)+1;
+                db.Students.Count(aStd => (aStd.DeptId == aStudent.DeptId) && (aStd.RegDate.Year == aStudent.RegDate.Year))+1;
             int noOfZeroToBeAdded = 3 - countDeptStd.ToString().Length;
             string noOfZero = "";
             for (int i = 0; i < noOfZeroToBeAdded; i++)
             {
-                noOfZero += i.ToString();
+                noOfZero += "0";
             }
 
             return aDepartment.DeptCode + "-" + aStudent.RegDate.Year + "-" + noOfZero + countDeptStd;
@@ -145,6 +145,16 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public JsonResult StudentEmailExits(string email)
+        {
+            var aStudent = db.Students.FirstOrDefault(x => x.Email == email);
+            if (aStudent == null)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
     }
 }

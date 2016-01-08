@@ -123,5 +123,26 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public JsonResult DepartmentNameExits(string deptname)
+        {
+            var aDepartment = db.Departments.FirstOrDefault(x => x.DeptName == deptname);
+            if (aDepartment != null)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DepartmentCodeExits(string deptcode)
+        {
+            var aDepartment = db.Departments.FirstOrDefault(x => x.DeptCode == deptcode);
+            if (aDepartment != null)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
     }
 }

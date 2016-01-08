@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace UniversityCourseAndResultManagementSystem.Models
 {
@@ -17,10 +18,12 @@ namespace UniversityCourseAndResultManagementSystem.Models
 
         [Display(Name = "Department Code")]
         [Required(ErrorMessage = "Please Enter Department Code"), MinLength(2, ErrorMessage = "Use minimum two character"), MaxLength(7, ErrorMessage = "Maximum seven character is permited")]
+        [Remote("DepartmentCodeExits","Departments",ErrorMessage = "Department code has been already exits.")]
         public string DeptCode { get; set; }
 
-        [Display(Name = "Depertment Code")]
+        [Display(Name = "Depertment Name")]
         [Required(ErrorMessage = "Please Enter Department Name")]
+        [Remote("DepartmentNameExits", "Departments", ErrorMessage = "Department name has been already exits.")]
         public string DeptName { get; set; }
 
         public virtual ICollection<Course> Courses { get; set; }

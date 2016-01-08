@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace UniversityCourseAndResultManagementSystem.Models
 {
@@ -21,6 +22,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
 
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         [Display(Name = "Email")]
+        [Remote("TeacherEmailExits", "Teachers", ErrorMessage = "Email already exits.Try with another email.")]
         public string Email { get; set; }
 
         [Display(Name = "Contact No")]

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace UniversityCourseAndResultManagementSystem.Models
 {
@@ -15,10 +16,12 @@ namespace UniversityCourseAndResultManagementSystem.Models
         [Display(Name = "Course Code")]
         [Required(ErrorMessage = "Course code is required")]
         [MinLength(5, ErrorMessage = "Use minimum 5 character")]
+        [Remote("CourseCodeExits", "Courses", ErrorMessage = "Course code already exits.")]
         public string CourseCode { get; set; }
 
         [Display(Name = "Course Name")]
         [Required(ErrorMessage = "Course Name is required")]
+        [Remote("CourseNameExits","Courses",ErrorMessage = "Course name already exits.")]
         public string CourseName { get; set; }
 
         [Display(Name = "Course Creadit")]
