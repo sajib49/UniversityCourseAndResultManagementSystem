@@ -145,6 +145,7 @@
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Designation.cs" />
+    <Compile Include="Models\EnrollCourse.cs" />
     <Compile Include="Models\ProjectDb.cs" />
     <Compile Include="Models\Semester.cs" />
     <Compile Include="Models\Student.cs" />

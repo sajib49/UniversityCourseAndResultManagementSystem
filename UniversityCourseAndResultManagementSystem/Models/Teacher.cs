@@ -28,8 +28,12 @@ namespace UniversityCourseAndResultManagementSystem.Models
         [Display(Name = "Contact No")]
         public string ContactNo { get; set; }
 
+        [Display(Name = "Designation")]
+        [Required(ErrorMessage = "Please select designation")]
         public int DesignationId { get; set; }
 
+        [Display(Name = "Department")]
+        [Required(ErrorMessage = "Please select depatyment")]
         public int DeptId { get; set; }
 
         [Range(0.5,double.MaxValue,ErrorMessage = "Creadit can be negative")]

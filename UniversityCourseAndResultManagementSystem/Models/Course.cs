@@ -34,8 +34,10 @@ namespace UniversityCourseAndResultManagementSystem.Models
         public string Description { get; set; }
 
         [Display(Name = "Department")]
+        [Required(ErrorMessage = "Please select department")]
         public int DeptId { get; set; }
 
+        [Required(ErrorMessage = "Please select semester")]
         [Display(Name = "Semester")]
         public int SemesterId { get; set; }
 

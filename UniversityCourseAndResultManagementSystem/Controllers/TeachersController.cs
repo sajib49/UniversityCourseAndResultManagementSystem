@@ -39,7 +39,7 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
         // GET: Teachers/Create
         public ActionResult Create()
         {
-            ViewBag.DeptId = new SelectList(db.Departments, "DeptId", "DeptCode");
+            ViewBag.DeptId = new SelectList(db.Departments, "DeptId", "DeptName");
             ViewBag.DesignationId = new SelectList(db.Designations, "DesignationId", "DesignationName");
             return View();
         }
