@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace UniversityCourseAndResultManagementSystem.Models
 {
@@ -38,9 +39,11 @@ namespace UniversityCourseAndResultManagementSystem.Models
         // GET: Courses/Create
         public ActionResult Create()
         {
+            
             ViewBag.DeptId = new SelectList(db.Departments, "DeptId", "DeptName");
             ViewBag.SemesterId = new SelectList(db.Semesters, "SemesterId", "SemesterName");
             return View();
+            
         }
 
         // POST: Courses/Create
@@ -128,7 +131,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
         public JsonResult CourseCodeExits(string coursecode)
         {
             var aCourse = db.Courses.FirstOrDefault(x => x.CourseCode == coursecode);
-            if (aCourse==null)
+            if (aCourse == null)
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }

@@ -23,6 +23,7 @@ namespace UniversityCourseAndResultManagementSystem
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/script.js",
                       "~/Scripts/wowslider.js",
+                      "~/Scripts/bootstrap-datetimepicker.js",
                       //"~/Scripts/wowslider.mod.js",
                       "~/Scripts/respond.js"));
 
@@ -30,6 +31,7 @@ namespace UniversityCourseAndResultManagementSystem
                       "~/Content/bootstrap.css",
                       "~/Content/style.css",
                       "~/Content/style.mod.css",
+                      "~/Content/bootstrap-datetimepicker.css",
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/slideStyle").Include(

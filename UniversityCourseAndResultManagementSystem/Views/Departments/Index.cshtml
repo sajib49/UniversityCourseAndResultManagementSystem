@@ -9,48 +9,55 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table @*class="table table-condensed table-bordered table-striped table-hover table-responsive"*@ id="example" class="display" cellspacing="0" width="100%">
+<table class="table table-condensed table-bordered table-striped table-hover table-responsive" id="example" class="display" cellspacing="0" width="100%">
     <thead>
-    <tr class="danger">
-        <th>
-            @Html.DisplayNameFor(model => model.DeptCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DeptName)
-        </th>
-        <th>
-            Action
-        </th>
-    </tr>
+        <tr >
+            <th class="danger" style="text-align: center">
+                @Html.DisplayNameFor(model => model.DeptCode)
+            </th>
+            <th class="danger" style="text-align: center">
+                @Html.DisplayNameFor(model => model.DeptName)
+            </th>
+            <th class="danger" style="text-align: center">
+                Action
+            </th>
+        </tr>
     </thead>
 
     <tbody>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeptCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeptName)
-            </td>
-            <td>
-                @*@Html.ActionLink("Edit", "Edit", new {id = item.DeptId}) |
-                @Html.ActionLink("Details", "Details", new {id = item.DeptId}) |
-                @Html.ActionLink("Delete", "Delete", new {id = item.DeptId})*@
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="danger" style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.DeptCode)
+                </td>
+                <td class="danger" style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.DeptName)
+                </td>
+                <td class="danger" style="text-align: center">
+                    @*@Html.ActionLink("Edit", "Edit", new {id = item.DeptId}) |
+            @Html.ActionLink("Details", "Details", new {id = item.DeptId}) |
+            @Html.ActionLink("Delete", "Delete", new {id = item.DeptId})*@
 
-                <a href="@Url.Action("Edit", "Departments", new {id = item.DeptId})">
-                    <span class="glyphicon glyphicon-edit"></span>
-                </a>|
-                <a href="@Url.Action("Details", "Departments", new { id = item.DeptId })">
-                    <span class="glyphicon glyphicon-th"></span>
-                </a>
-                <a href="@Url.Action("Delete", "Departments", new { id = item.DeptId })">
-                    <span class="glyphicon glyphicon-trash"></span>
-</td>
-        </tr>
-    }
+                    <a href="@Url.Action("Edit", "Departments", new {id = item.DeptId})">
+
+                        <span class="glyphicon glyphicon-edit"></span>
+
+                    </a>
+                    <a href="@Url.Action("Details", "Departments", new {id = item.DeptId})">
+                        @*<span style="height: 20px;width:20px " class="input-group-addon">*@
+                        <span class="glyphicon glyphicon-th"></span>
+
+                    </a>
+                    <a href="@Url.Action("Delete", "Departments", new {id = item.DeptId})">
+
+                        <span class="glyphicon glyphicon-trash"></span>
+
+                    </a>
+                </td>
+
+            </tr>
+        }
     </tbody>
 
 </table>
-

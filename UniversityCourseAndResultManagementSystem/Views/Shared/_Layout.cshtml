@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/dataTablesDesigner")
-
+    <link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
     <link href="~/Content/swimbi.css" rel="stylesheet" />
 </head>
 <body style="background:fixed url(https://pcbx.us/bexy.jpg)">
@@ -110,15 +110,20 @@ frsgf
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
-@*@Scripts.Render("~/Scripts/dataTablesScripts")*@
 @Scripts.Render("~/Content/slideScripts")
 @Scripts.Render("~/Content/slideStyle")
 <script src="~/Scripts/swimbi.js"></script>
 @RenderSection("scripts", required: false)
 <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('#example').DataTable();
+
+        $('#datepicker').datetimepicker({
+           format: 'YYYY-MM-DD'
+        });
     });
 </script>
 

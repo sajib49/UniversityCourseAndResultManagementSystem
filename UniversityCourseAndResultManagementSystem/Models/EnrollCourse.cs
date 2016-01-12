@@ -11,11 +11,13 @@ namespace UniversityCourseAndResultManagementSystem.Models
         [Key]
         public int EnrollId { get; set; }
 
+        [Display(Name = "Student Reg. No")]
         public int StudentId { get; set; }
 
         public int CourseId { get; set; }
 
-        public DateTime Date { get; set; }
+        [DataType(DataType.Date,ErrorMessage = "Invalid date formate")]
+        public DateTime EnrollDate { get; set; }
 
     }
 }
