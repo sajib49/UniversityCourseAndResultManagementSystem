@@ -29,7 +29,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
-        </th>
+         </th>
         <th>
             Action
         </th>
@@ -57,7 +57,8 @@
                 @Html.DisplayFor(modelItem => item.Creadit)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @*@Html.DisplayFor(modelItem => item.Description)*@
+                @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Description))
             </td>
             <td>
                 @*@Html.ActionLink("Edit", "Edit", new { id = item.CourseId }) |

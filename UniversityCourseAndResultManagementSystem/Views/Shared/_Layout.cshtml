@@ -116,7 +116,8 @@ frsgf
 @RenderSection("scripts", required: false)
 <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
 <script src="~/Scripts/moment.min.js"></script>
-    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('#example').DataTable();
@@ -124,6 +125,7 @@ frsgf
         $('#datepicker').datetimepicker({
            format: 'YYYY-MM-DD'
         });
+        CKEDITOR.replace('editor1');
     });
 </script>
 
