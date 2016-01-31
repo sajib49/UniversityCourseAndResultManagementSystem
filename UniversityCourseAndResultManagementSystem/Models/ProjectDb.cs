@@ -11,7 +11,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
     {
         public ProjectDb() : base("UCRMS_ConnectionString")
         {
-            
+            this.Configuration.ProxyCreationEnabled = false;
         }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Semester> Semesters { get; set; }

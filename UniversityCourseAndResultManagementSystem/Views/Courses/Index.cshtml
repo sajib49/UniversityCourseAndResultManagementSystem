@@ -6,79 +6,108 @@
 
 <h2>View All Courses</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table @*class="table table-condensed table-bordered table-striped table-hover table-responsive"*@ id="example" class="display" cellspacing="0">
-    <thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Department.DeptCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Semester.SemesterName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CourseCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CourseName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Creadit)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-         </th>
-        <th>
-            Action
-        </th>
-    </tr>
-    </thead>
+<div ng-app="CourseListApp">
+    <div ng-controller="StudentController">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <div class="alert alert-success" role="alert">Total Course: {{CountAllCourses()}}</div>
 
-    <tbody>
+        <table @*class="table table-condensed table-bordered table-striped table-hover table-responsive"*@ id="example" class="display" cellspacing="0">
+            <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Department.DeptCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Semester.SemesterName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CourseCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CourseName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Creadit)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+            </thead>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Department.DeptCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Semester.SemesterName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CourseCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CourseName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Creadit)
-            </td>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.Description)*@
-                @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Description))
-            </td>
-            <td>
-                @*@Html.ActionLink("Edit", "Edit", new { id = item.CourseId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.CourseId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })*@
+            <tbody>
 
-                <a href="@Url.Action("Edit", "Courses", new {id = item.CourseId})">
-                    <span class="glyphicon glyphicon-edit"></span>
-                </a>|
-                <a href="@Url.Action("Details", "Courses", new {id = item.CourseId})">
-                    <span class="glyphicon glyphicon-th"></span>
-                </a>
-                <a href="@Url.Action("Delete", "Courses", new {id = item.CourseId})">
-                    <span class="glyphicon glyphicon-trash"></span>
-                </a>
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department.DeptCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Semester.SemesterName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourseCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourseName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Creadit)
+                        {{}}
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Description)*@
+                        @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Description))
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.CourseId }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.CourseId }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })*@
+
+                        <a href="@Url.Action("Edit", "Courses", new {id = item.CourseId})">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>|
+                        <a href="@Url.Action("Details", "Courses", new {id = item.CourseId})">
+                            <span class="glyphicon glyphicon-th"></span>
+                        </a>
+                        <a href="@Url.Action("Delete", "Courses", new {id = item.CourseId})">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+ </div>
+</div>
+@section scripts
+{
+    <script>
+        var courseListApp = angular.module("CourseListApp", []);
+        courseListApp.controller("StudentController", function ($scope, $http) {
+            $scope.allCourses = [];
+            $http.get('@Url.Action("GetAllCourse","Courses")').
+                success(function (data) {
+                    $scope.allCourses = data;
+                }).error(function (data, status, headers, config) {
+                });
+           
+            $scope.CountAllCourses = function() {
+                var countStudent = 0;
+                angular.forEach($scope.allCourses, function(aCourse) {
+                    countStudent++;
+                });
+                return countStudent;
+            }
+        });
+    </script>
+}
 
 
 

@@ -127,6 +127,11 @@ namespace UniversityCourseAndResultManagementSystem.Models
             return RedirectToAction("Index");
         }
 
+        public JsonResult GetAllCourse()
+        {
+            var allCourses = db.Courses.ToList();
+            return Json(allCourses, JsonRequestBehavior.AllowGet);
+        }
 
 
         public JsonResult CourseCodeExits(string coursecode)

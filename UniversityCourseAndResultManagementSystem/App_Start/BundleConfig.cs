@@ -26,6 +26,9 @@ namespace UniversityCourseAndResultManagementSystem
                       "~/Scripts/bootstrap-datetimepicker.js",
                       //"~/Scripts/wowslider.mod.js",
                       "~/Scripts/respond.js"));
+            bundles.Add(new ScriptBundle("~/Angular.js").Include(
+                "~/Scripts/angular.js"
+                ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
