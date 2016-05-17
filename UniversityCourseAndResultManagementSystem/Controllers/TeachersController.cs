@@ -53,6 +53,7 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                teacher.RemaingCreadit = teacher.CreaditToBeTaken;
                 db.Teachers.Add(teacher);
                 db.SaveChanges();
                 return RedirectToAction("Index");

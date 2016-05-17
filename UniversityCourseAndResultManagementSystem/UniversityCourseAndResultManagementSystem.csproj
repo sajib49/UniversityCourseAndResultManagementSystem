@@ -117,6 +117,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AssignCoursesController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
@@ -139,6 +140,10 @@
     <Compile Include="Migrations\201512290750058_studentReg.No is now not require.cs" />
     <Compile Include="Migrations\201512290750058_studentReg.No is now not require.Designer.cs">
       <DependentUpon>201512290750058_studentReg.No is now not require.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605171210579_Edit Teacher Model.cs" />
+    <Compile Include="Migrations\201605171210579_Edit Teacher Model.Designer.cs">
+      <DependentUpon>201605171210579_Edit Teacher Model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
@@ -1620,6 +1625,7 @@
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\AssignCourses\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1640,6 +1646,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512290750058_studentReg.No is now not require.resx">
       <DependentUpon>201512290750058_studentReg.No is now not require.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605171210579_Edit Teacher Model.resx">
+      <DependentUpon>201605171210579_Edit Teacher Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

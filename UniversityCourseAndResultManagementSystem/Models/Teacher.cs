@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Newtonsoft.Json;
 
 namespace UniversityCourseAndResultManagementSystem.Models
@@ -41,15 +43,20 @@ namespace UniversityCourseAndResultManagementSystem.Models
         [Required(ErrorMessage = "Please select department")]
         public int DeptId { get; set; }
 
-        [Range(0.5,double.MaxValue,ErrorMessage = "Creadit can be negative")]
+        [Range(0.5,double.MaxValue,ErrorMessage = "Creadit can not be less than 0.5")]
         [Display(Name = "Creadit To Be Taken")]
         [Required(ErrorMessage = "Creadit to be taken by teacher?")]
         public double CreaditToBeTaken { set; get; }
+
+        [DefaultValue(0.0)]
+        public double RemaingCreadit { get; set; }
 
         [ForeignKey("DesignationId")]
        public virtual Designation Designation { get; set; }
 
         [ForeignKey("DeptId")]
         public virtual Department Department { get; set; }
+
+        
     }
 }
