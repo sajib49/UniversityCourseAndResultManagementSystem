@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 
 namespace UniversityCourseAndResultManagementSystem.Models
 {
@@ -15,17 +16,20 @@ namespace UniversityCourseAndResultManagementSystem.Models
         public int TeacherId { get; set; }
 
         [Display(Name = "Teacher Name")]
+        [Required(ErrorMessage = "Enter Teacher Name")]
         public string TeacherName { get; set; }
 
         [Display(Name = "Address")]
         public string Address { get; set; }
 
+        [Required(ErrorMessage = "Enter Email Address")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         [Display(Name = "Email")]
         [Remote("TeacherEmailExits", "Teachers", ErrorMessage = "Email already exits.Try with another email.")]
         public string Email { get; set; }
 
         [Display(Name = "Contact No")]
+        [Required(ErrorMessage = "Enter Contact Number of Teacher")]
         public string ContactNo { get; set; }
 
         [Display(Name = "Designation")]
@@ -38,6 +42,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
 
         [Range(0.5,double.MaxValue,ErrorMessage = "Creadit can be negative")]
         [Display(Name = "Creadit To Be Taken")]
+        [Required(ErrorMessage = "Creadit to be taken by teacher?")]
         public double CreaditToBeTaken { set; get; }
 
         [ForeignKey("DesignationId")]
