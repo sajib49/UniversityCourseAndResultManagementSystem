@@ -20,6 +20,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
         public string TeacherName { get; set; }
 
         [Display(Name = "Address")]
+        [Required(ErrorMessage = "Enter The Address of Teacher")]
         public string Address { get; set; }
 
         [Required(ErrorMessage = "Enter Email Address")]
@@ -37,7 +38,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
         public int DesignationId { get; set; }
 
         [Display(Name = "Department")]
-        [Required(ErrorMessage = "Please select depatyment")]
+        [Required(ErrorMessage = "Please select department")]
         public int DeptId { get; set; }
 
         [Range(0.5,double.MaxValue,ErrorMessage = "Creadit can be negative")]
@@ -46,7 +47,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
         public double CreaditToBeTaken { set; get; }
 
         [ForeignKey("DesignationId")]
-        public virtual Designation Designation { get; set; }
+       public virtual Designation Designation { get; set; }
 
         [ForeignKey("DeptId")]
         public virtual Department Department { get; set; }
