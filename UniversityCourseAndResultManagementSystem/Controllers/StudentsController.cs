@@ -156,5 +156,11 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             }
             return Json(false, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetAllStudents()
+        {
+            var allStudents = db.Students.ToList();
+            return Json(allStudents, JsonRequestBehavior.AllowGet);
+        }
     }
 }
