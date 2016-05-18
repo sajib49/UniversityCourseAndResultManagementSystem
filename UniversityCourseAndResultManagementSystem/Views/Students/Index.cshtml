@@ -6,12 +6,21 @@
 
 <h2>Index</h2>
 
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken();
+        
+        
+        
+        
+    }
+
 <div ng-app="StudentListApp">
     <div ng-controller="StudentController">
         <p>
             @Html.ActionLink("Create New", "Create")
         </p>
-        <div class="alert alert-success" role="alert">Total Teacher: {{CountAllStudents()}}</div>
+        <div class="alert alert-success" role="alert">Total Student: {{CountAllStudents()}}</div>
         <table class="display table table-condensed table-bordered table-striped table-hover table-responsive">
             <thead>
                 <tr>
