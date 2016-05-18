@@ -3,13 +3,24 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<style>
+    table thead tr th {
+        text-align: center;
+    }
+    table tbody tr td {
+        text-align: center;
+    }
+    table tbody tr td a {
+        text-decoration: none;
+    }
+</style>
 <h2>Index</h2>
-<div>
-    <div>
+<div ng-app="TeacherListApp">
+    <div ng-controller="TeacherController">
         <p>
             @Html.ActionLink("Create New", "Create")
         </p>
+        <div class="alert alert-success" role="alert">Total Teacher: {{CountAllTeachers()}}</div>
         <table class="display table table-condensed table-bordered table-striped table-hover table-responsive" id="example" cellspacing="0" width="100%">
             <thead>
                 <tr>
@@ -63,9 +74,20 @@
                             @Html.DisplayFor(modelItem => item.CreaditToBeTaken)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.TeacherId }) |
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.TeacherId }) |
                             @Html.ActionLink("Details", "Details", new { id = item.TeacherId }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.TeacherId })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.TeacherId })*@
+
+                            <a href="@Url.Action("Edit", "Teachers", new {id = item.TeacherId})">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </a>|
+                            <a href="@Url.Action("Details", "Teachers", new {id = item.TeacherId})">
+                                <span class=" glyphicon glyphicon-th"></span>
+                        </a>|
+                            <a href="@Url.Action("Delete", "Teachers", new { id = item.TeacherId })">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+
                         </td>
                     </tr>
                 }
@@ -74,3 +96,24 @@
     </div>
 </div>
 
+@section scripts
+{
+    <script>
+        var teacherListApp = angular.module("TeacherListApp", []);
+        teacherListApp.controller("TeacherController", function($scope,$http) {
+            $scope.allTeachers = [];
+            $http.get('@Url.Action("GetAllTeacher", "Teachers")').success(function(data) {
+                $scope.allTeachers = data;
+            });
+
+            $scope.CountAllTeachers = function() {
+                var countTeacher = 0;
+                angular.forEach($scope.allTeachers, function(aTeacher) {
+                    countTeacher++;
+                });
+                return countTeacher;
+            }
+
+        });
+    </script>
+}
