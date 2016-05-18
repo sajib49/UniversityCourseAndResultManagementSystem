@@ -46,5 +46,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
 
         [ForeignKey("SemesterId")]
         public virtual Semester Semester { get; set; }
+
+        public ICollection<RoomAllocation> RoomAllocations { get; set; }
     }
 }
