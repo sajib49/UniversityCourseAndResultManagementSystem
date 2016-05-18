@@ -10,18 +10,13 @@
     {
         @Html.AntiForgeryToken();
         
-        
-        
-        
-    }
-
-<div ng-app="StudentListApp">
+        <div ng-app="StudentListApp">
     <div ng-controller="StudentController">
         <p>
             @Html.ActionLink("Create New", "Create")
         </p>
         <div class="alert alert-success" role="alert">Total Student: {{CountAllStudents()}}</div>
-        <table class="display table table-condensed table-bordered table-striped table-hover table-responsive">
+        <table id="example" class="display table table-condensed table-bordered table-striped table-hover table-responsive">
             <thead>
                 <tr>
                     <th>
@@ -96,6 +91,11 @@
         </table>
     </div>
 </div>
+
+        
+        
+    }
+
 
     
 @section scripts

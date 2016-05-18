@@ -11,7 +11,7 @@
                 @Html.ActionLink("Create New", "Create")
             </p>
             <div class="alert alert-success" role="alert">Total Department: {{CountAllDepartments()}}</div>
-            <table class="table table-condensed table-bordered table-striped table-hover table-responsive" cellspacing="0">
+            <table class="display table table-condensed table-bordered table-striped table-hover table-responsive" id="example" cellspacing="0">
                 <thead>
                     <tr>
                         <th class="danger" style="text-align: center">
@@ -49,9 +49,7 @@
 
                                 </a>
                                 <a href="@Url.Action("Delete", "Departments", new {id = item.DeptId})">
-
                                     <span class="glyphicon glyphicon-trash"></span>
-
                                 </a>
                             </td>
 
