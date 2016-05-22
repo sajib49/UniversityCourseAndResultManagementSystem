@@ -48,6 +48,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
 
         [ForeignKey("DeptId")]
         public virtual Department Department { get; set; }
+        public ICollection<Result> Results { get; set; } 
 
     }
 }
