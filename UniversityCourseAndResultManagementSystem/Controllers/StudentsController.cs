@@ -184,7 +184,14 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             }, "", "GadeName");
             return View();
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SaveResult(Result aResult)
+        {
+            db.Results.Add(aResult);
+            db.SaveChanges();
+            return View();
+        }
 
     }
 }

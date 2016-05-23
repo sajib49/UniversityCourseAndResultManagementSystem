@@ -1,7 +1,7 @@
 ﻿@model UniversityCourseAndResultManagementSystem.Models.Result
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Save Result";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -42,37 +42,31 @@
                 <input type="text" value="<<Student Not Selected>>" placeholder="advdv" readonly class="form-control" />
             </div>
         </div>
-        @*
-    <div class="form-group">
-        @Html.Label("Email", htmlAttributes: new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.Editor("", new {htmlAttributes = new {@class = "form-control"}})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.Label("Department", htmlAttributes: new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.Editor("", new {htmlAttributes = new {@class = "form-control"}})
-        </div>
-    </div>*@
-
+       
         <div class="form-group">
             @Html.LabelFor(model => model.CourseId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("cid", (SelectList)ViewBag.CourseList, "--Select Course--", htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("CourseId", (SelectList)ViewBag.CourseList, "--Select Course--", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.StudentId, "", new { @class = "text-danger" })
             </div>
         </div>
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Grade, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Grade, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.DropDownList("gid", (SelectList)ViewBag.GradeList, "--Select Grade--", htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Grade, "", new { @class = "text-danger" })
+                @Html.DropDownList("Grade", (SelectList) ViewBag.GradeList, "--Select Grade--", htmlAttributes: new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Grade, "", new {@class = "text-danger"})
             </div>
         </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save Result" class="btn btn-success" />
+            </div>
+        </div>
+
+
     </div>
 }
 
