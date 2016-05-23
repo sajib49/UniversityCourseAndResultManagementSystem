@@ -3,11 +3,12 @@ namespace UniversityCourseAndResultManagementSystem.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class Init : DbMigration
     {
         public override void Up()
         {
-
+            
+            
             CreateTable(
                 "dbo.Results",
                 c => new
@@ -18,17 +19,16 @@ namespace UniversityCourseAndResultManagementSystem.Migrations
                         Grade = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.ResultId)
-                .ForeignKey("dbo.Courses", t => t.CourseId, cascadeDelete: false)
-                .ForeignKey("dbo.Students", t => t.StudentId, cascadeDelete: true)
+                .ForeignKey("dbo.Courses", t => t.CourseId, cascadeDelete: true)
+                .ForeignKey("dbo.Students", t => t.StudentId, cascadeDelete: false)
                 .Index(t => t.StudentId)
                 .Index(t => t.CourseId);
-       
+ 
             
         }
         
         public override void Down()
         {
-           
         }
     }
 }
