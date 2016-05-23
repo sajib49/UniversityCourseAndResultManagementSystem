@@ -4,11 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+
 namespace UniversityCourseAndResultManagementSystem.Models
 {
     public class Result
     {
-        
         [Key]
         public int ResultId { get; set; }
 
@@ -23,11 +23,11 @@ namespace UniversityCourseAndResultManagementSystem.Models
 
         [Display(Name = "Grade")]
         [Required(ErrorMessage = "Please Select Grade")]
-        public int Grade { get; set; }
+        public string Grade { get; set; }
 
         [ForeignKey("StudentId")]
         public virtual Student Student { get; set; }
         [ForeignKey("CourseId")]
-        public virtual Course  Course{ get; set; }
+        public virtual Course Course { get; set; }
     }
 }

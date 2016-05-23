@@ -1,0 +1,79 @@
+﻿@model UniversityCourseAndResultManagementSystem.Models.Result
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Save Result</h2>
+
+@using (Html.BeginForm())
+{
+    
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true,"",new{@class="text-danger"} )
+        <div class="form-group">
+            @Html.LabelFor(model => model.StudentId, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DropDownList("sId", (SelectList) ViewBag.StudentList, "--Select Student--", htmlAttributes: new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.StudentId, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Name</label>
+            <div class="col-md-10">
+                <input type="text" value="<<Student Not Selected>>" readonly class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Email</label>
+            <div class="col-md-10">
+                <input type="text" value="<<Student Not Selected>>"  readonly class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Department</label>
+            <div class="col-md-10">
+                <input type="text" value="<<Student Not Selected>>" placeholder="advdv" readonly class="form-control" />
+            </div>
+        </div>
+        @*
+    <div class="form-group">
+        @Html.Label("Email", htmlAttributes: new {@class = "control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.Editor("", new {htmlAttributes = new {@class = "form-control"}})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Department", htmlAttributes: new {@class = "control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.Editor("", new {htmlAttributes = new {@class = "form-control"}})
+        </div>
+    </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CourseId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("cid", (SelectList)ViewBag.CourseList, "--Select Course--", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StudentId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Grade, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("gid", (SelectList)ViewBag.GradeList, "--Select Grade--", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Grade, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+}
+
+

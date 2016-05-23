@@ -163,5 +163,28 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             return Json(allStudents, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult SaveResult()
+        {
+            ViewBag.StudentList = new SelectList(db.Students,  "StudentId","RegNo");
+            ViewBag.CourseList = new SelectList(db.Courses, "CourseId", "CourseName");
+            ViewBag.GradeList = new SelectList(new[]
+            {
+                new {GadeName="A+"},
+                new {GadeName="A"},
+                new {GadeName="A-"},
+                new {GadeName="B+"},
+                new {GadeName="B"},
+                new {GadeName="B-"},
+                new {GadeName="C+"},
+                new {GadeName="C"},
+                new {GadeName="C-"},
+                new {GadeName="D+"},
+                new {GadeName="D"},
+                new {GadeName="D-"}
+            }, "", "GadeName");
+            return View();
+        }
+
+
     }
 }

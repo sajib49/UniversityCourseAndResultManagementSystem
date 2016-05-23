@@ -1366,11 +1366,14 @@ a.text-warning:focus {
   color: #66512c;
 }
 .text-danger {
-  color:white;
+  color:red;
+    font-family:monospace;
+    font-style: italic;
 }
 a.text-danger:hover,
 a.text-danger:focus {
   color: #843534;
+    font-weight: bold;
 }
 .bg-primary {
   color: #fff;

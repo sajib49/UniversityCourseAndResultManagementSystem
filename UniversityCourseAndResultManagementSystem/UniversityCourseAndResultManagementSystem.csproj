@@ -145,6 +145,10 @@
     <Compile Include="Migrations\201605171210579_Edit Teacher Model.Designer.cs">
       <DependentUpon>201605171210579_Edit Teacher Model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605231034291_added result class.cs" />
+    <Compile Include="Migrations\201605231034291_added result class.Designer.cs">
+      <DependentUpon>201605231034291_added result class.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
@@ -152,6 +156,7 @@
     <Compile Include="Models\Designation.cs" />
     <Compile Include="Models\EnrollCourse.cs" />
     <Compile Include="Models\ProjectDb.cs" />
+    <Compile Include="Models\Result.cs" />
     <Compile Include="Models\Semester.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Teacher.cs" />
@@ -1626,6 +1631,7 @@
     <Content Include="Views\Students\Index.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\AssignCourses\index.cshtml" />
+    <None Include="Views\Students\SaveResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1649,6 +1655,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605171210579_Edit Teacher Model.resx">
       <DependentUpon>201605171210579_Edit Teacher Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605231034291_added result class.resx">
+      <DependentUpon>201605231034291_added result class.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
