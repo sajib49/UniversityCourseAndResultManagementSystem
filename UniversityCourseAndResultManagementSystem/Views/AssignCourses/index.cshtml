@@ -1,6 +1,7 @@
-﻿
+﻿@using System.Web.UI.WebControls
+@model UniversityCourseAndResultManagementSystem.Models.CourseAssign
 @{
-    ViewBag.Title = "CourseAssign";
+    ViewBag.Title = "Course Assign";
 }
 
 <h2>CourseAssign</h2>
@@ -8,8 +9,47 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+    <div class="form-horizontal">
+        <h4>Course Assign</h4>
+        <hr/>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.DepartmentId, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.DepartmentId, (SelectList) ViewBag.Departments, "--Select Department--", htmlAttributes: new {@class = "form-control", id = "department"})
+                @Html.ValidationMessageFor(m => m.DepartmentId, "", new {@class = "text-danger"})
+            </div>
+            @Html.LabelFor(m => m.TeacherId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.DepartmentId, (SelectList) ViewBag.Teachers, "--Select Teacher--", htmlAttributes: new {@class = "form-control", id = "teacher"})
+                @Html.ValidationMessageFor(m => m.TeacherId, "", new {@class = "text-danger"})
+            </div>
+
+            @Html.Label("Creadit To Be Taken", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control"/>
+                @Html.ValidationMessageFor(m => m.TeacherId, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(m => m.CourseId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.CourseId, (SelectList)ViewBag.Courses, "--Select Course--", htmlAttributes: new { @class = "form-control", id = "teacher" })
+                @Html.ValidationMessageFor(m => m.CourseId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Assign" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
    
     
 }
+
+@section scripts
+{
+    
+}
+
 

@@ -13,7 +13,9 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
         // GET: /AssignCourses/
         public ActionResult Index()
         {
-            ViewBag.Department = new SelectList(db.Departments, "DeptId", "DeptName");
+            ViewBag.Departments = new SelectList(db.Departments, "DeptId", "DeptName");
+            ViewBag.Teachers = new SelectList(db.Teachers, "TeacherId", "TeacherName");
+            ViewBag.Courses = new SelectList(db.Courses,"CourseId","CourseCode");
             return View();
         }
 	}

@@ -132,6 +132,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Models\CourseAssign.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Designation.cs" />
     <Compile Include="Models\EnrollCourse.cs" />
