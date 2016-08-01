@@ -125,6 +125,23 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult AssignCourse()
+        {
+            ViewBag.Departments = new SelectList(db.Departments, "DeptId", "DeptName");
+            ViewBag.Teachers = new SelectList(db.Teachers, "TeacherId", "TeacherName");
+            ViewBag.Courses = new SelectList(db.Courses, "CourseId", "CourseCode");
+            return View();
+        }
+        public ActionResult GetCourseByCourseId(int courseId)
+        {
+            Course aCourse = db.Courses.Find(courseId);
+            return Json(aCourse, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetTeacherByTeacherId(int teacherId)
+        {
+            Teacher aTeacher = db.Teachers.Find(teacherId);
+            return Json(aTeacher, JsonRequestBehavior.AllowGet);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -149,5 +166,7 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             var allTeachers = db.Teachers.ToList();
             return Json(allTeachers, JsonRequestBehavior.AllowGet);
         }
+
+       
     }
 }

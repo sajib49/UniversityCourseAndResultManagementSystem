@@ -1,0 +1,129 @@
+﻿@using System.Web.UI.WebControls
+@model UniversityCourseAndResultManagementSystem.Models.CourseAssign
+@{
+    ViewBag.Title = "Course Assign";
+}
+
+<h2>CourseAssign</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Course Assign</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.DepartmentId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.DepartmentId, (SelectList)ViewBag.Departments, "--Select Department--", htmlAttributes: new { @class = "form-control", id = "department" })
+                @Html.ValidationMessageFor(m => m.DepartmentId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.TeacherId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.TeacherId, (SelectList)ViewBag.Teachers, "--Select Teacher--", htmlAttributes: new { @class = "form-control", id = "teacherId" })
+                @Html.ValidationMessageFor(m => m.TeacherId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Creadit To Be Taken", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control" readonly id="creaditToBeTaken" />
+                @Html.ValidationMessageFor(m => m.TeacherId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Remaing Creadit", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control" readonly id="remaingCreadit" />
+                @Html.ValidationMessageFor(m => m.TeacherId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.CourseId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.CourseId, (SelectList)ViewBag.Courses, "--Select Course--", htmlAttributes: new { @class = "form-control", id = "courseId" })
+                @Html.ValidationMessageFor(m => m.CourseId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Name</label>
+            <div class="col-md-10">
+                <input readonly class="form-control" id="courseName" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Creadit</label>
+            <div class="col-md-10">
+                <input readonly class="form-control" id="courseCreadit" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Assign" class="btn btn-success" />
+            </div>
+        </div>
+
+    </div>
+
+
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#courseId").change(function() {
+                var courseId = $("#courseId").val();
+                var jsnFormatData = { CourseId: courseId };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetCourseByCourseId", "Teachers")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(jsnFormatData),
+                    dataType: "json",
+                    success: function(data) {
+                        $("#courseName").val(data.CourseName);
+                        $("#courseCreadit").val(data.Creadit);
+
+                    }
+
+                });
+                if (courseId == 0) {
+                    $("#courseName").val("");
+                    $("#courseCreadit").val("");
+                }
+            });
+
+            $("#teacherId").change(function() {
+                var teacherId = $("#teacherId").val();
+                var jsnFormatData = { TeacherId: teacherId };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetTeacherByTeacherId", "Teachers")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(jsnFormatData),
+                    dataType: "json",
+                    success: function (data) {
+                        $("#creaditToBeTaken").val(data.CreaditToBeTaken);
+                        $("#remaingCreadit").val(data.RemaingCreadit);
+
+                    }
+
+                });
+                if (teacherId == 0) {
+                    $("#creaditToBeTaken").val("");
+                    $("#remaingCreadit").val("");
+                }
+            });
+        });
+    </script>
+}
+
+
