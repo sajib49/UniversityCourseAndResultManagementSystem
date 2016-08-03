@@ -142,6 +142,13 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             Teacher aTeacher = db.Teachers.Find(teacherId);
             return Json(aTeacher, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetTeacherByDeptId(int deptId)
+        {
+            var teachers = db.Teachers.Where(aTeacher => aTeacher.DeptId == deptId);
+            return Json(teachers, JsonRequestBehavior.AllowGet);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
