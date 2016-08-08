@@ -153,5 +153,11 @@ namespace UniversityCourseAndResultManagementSystem.Models
             }
             return Json(false, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetCourseByDeptId(int deptId)
+        {
+            var courses = db.Courses.Where(aCourse => aCourse.DeptId == deptId);
+            return Json(courses,JsonRequestBehavior.AllowGet);
+        }
     }
 }

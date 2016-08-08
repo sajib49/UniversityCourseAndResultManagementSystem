@@ -48,7 +48,10 @@
         <div class="form-group">
             @Html.LabelFor(m => m.CourseId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(m => m.CourseId, (SelectList)ViewBag.Courses, "--Select Course--", htmlAttributes: new { @class = "form-control", id = "courseId" })
+                <select id="course" class="form-control">
+                    <option value="0">--Select Course--</option>
+                </select>
+                @*@Html.DropDownListFor(m => m.CourseId, (SelectList)ViewBag.Courses, "--Select Course--", htmlAttributes: new { @class = "form-control", id = "courseId" })*@
                 @Html.ValidationMessageFor(m => m.CourseId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -96,6 +99,11 @@
 
                         success: function(data) {
                             $("#teacherId").find("option").not(":first").remove();
+                            $("#creaditToBeTaken").val("");
+                            $("#remaingCreadit").val("");
+                            $("#courseName").val("");
+                            $("#courseCreadit").val("");
+
                             $.each(data, function(i) {
                                 var optionhtml = '<option value="' +
                                     data[i].TeacherId + '">' + data[i].TeacherName + '</option>';
@@ -103,11 +111,39 @@
                             });
                         }
                     });
+
+
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetCourseByDeptId", "Courses")',
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(jsnFormatData),
+                        dataType: "json",
+
+                        success: function (data) {
+                            $("#course").find("option").not(":first").remove();
+                            $("#creaditToBeTaken").val("");
+                            $("#remaingCreadit").val("");
+                            $("#courseName").val("");
+                            $("#courseCreadit").val("");
+                            $.each(data, function (i) {
+                                var optionhtml = '<option value="' +
+                                    data[i].CourseId + '">' + data[i].CourseCode + '</option>';
+                                $("#course").append(optionhtml);
+                            });
+                        }
+                    });
+
+
+                    
                 }
                 if (deptId == 0) {
                     $("#teacherId").find("option").not(":first").remove();
+                    $("#course").find("option").not(":first").remove();
                     $("#creaditToBeTaken").val("");
                     $("#remaingCreadit").val("");
+                    $("#courseName").val("");
+                    $("#courseCreadit").val("");
                 }
                 return false;
             });
@@ -139,29 +175,29 @@
             });
 
 
-            $("#courseId").change(function() {
-                var courseId = $("#courseId").val();
-
+            $("#course").change(function() {
+                var courseId = $("#course").val();
                 var jsnFormatData = { CourseId: courseId };
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("GetCourseByCourseId", "Teachers")',
-                    contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify(jsnFormatData),
-                    dataType: "json",
-                    success: function(data) {
-                        $("#courseName").val(data.CourseName);
-                        $("#courseCreadit").val(data.Creadit);
+                if (courseId != 0)
+                {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetCourseByCourseId", "Teachers")',
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(jsnFormatData),
+                        dataType: "json",
+                        success: function (data) {
+                            $("#courseName").val(data.CourseName);
+                            $("#courseCreadit").val(data.Creadit);
+                        }
+                    });
+                }
 
-                    }
-
-                });
                 if (courseId == 0) {
                     $("#courseName").val("");
                     $("#courseCreadit").val("");
                 }
             });
-
         });
     </script>
 }
