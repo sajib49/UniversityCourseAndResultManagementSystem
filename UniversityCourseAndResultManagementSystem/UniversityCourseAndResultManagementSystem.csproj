@@ -1610,6 +1610,7 @@
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Courses\CourseStatics.cshtml" />
     <None Include="Views\Students\SaveResult.cshtml" />
     <Content Include="Views\Teachers\AssignCourse.cshtml" />
   </ItemGroup>
