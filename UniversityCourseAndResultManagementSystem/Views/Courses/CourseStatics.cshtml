@@ -1,7 +1,86 @@
-﻿
+﻿@model UniversityCourseAndResultManagementSystem.Models.Department
 @{
     ViewBag.Title = "CourseStatics";
 }
 
 <h2>CourseStatics</h2>
 
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Course Assign</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Department</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.DeptId, (SelectList)ViewBag.Departments, "--Select Department--", htmlAttributes: new { @class = "form-control", id = "department" })
+                @Html.ValidationMessageFor(m => m.DeptId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+     <table id="example" class="display" cellspacing="0">
+            <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Department.DeptCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Semester.SemesterName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CourseCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CourseName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Creadit)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+            </thead>
+
+            <tbody>
+                                               
+            </tbody>
+        </table>
+
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#department").change(function () {
+                var deptId = $("#department").val();
+                var jsnFormatData = { deptId: deptId };
+                if (deptId != 0) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetCourseStaticsByDeptId", "Courses")',
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(jsnFormatData),
+                        dataType: "json",
+
+                        success: function (data) {
+                            $.each(data, function (i) {
+                                //var optionhtml = '<option value="' +
+                                //    data[i].TeacherId + '">' + data[i].TeacherName + '</option>';
+                                //$("#teacherId").append(optionhtml);
+                            });
+                        }
+                    });
+                }
+               return false;
+            });
+        });
+    </script>
+}
