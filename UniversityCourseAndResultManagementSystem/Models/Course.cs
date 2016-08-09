@@ -41,6 +41,12 @@ namespace UniversityCourseAndResultManagementSystem.Models
         [Display(Name = "Semester")]
         public int SemesterId { get; set; }
 
+        [Display(Name = "Teacher")]
+        public int TeacherId { get; set; }
+
+        [ForeignKey("TeacherId")]
+        public virtual Teacher Teacher { get; set; }
+
         [ForeignKey("DeptId")]
         public virtual Department Department { get; set; }
 

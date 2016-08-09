@@ -1,4 +1,5 @@
-﻿@model UniversityCourseAndResultManagementSystem.Models.Department
+﻿@using System.Security.Policy
+@model UniversityCourseAndResultManagementSystem.Models.Department
 @{
     ViewBag.Title = "CourseStatics";
 }
@@ -72,9 +73,9 @@
 
                         success: function (data) {
                             $.each(data, function (i) {
-                                //var optionhtml = '<option value="' +
-                                //    data[i].TeacherId + '">' + data[i].TeacherName + '</option>';
-                                //$("#teacherId").append(optionhtml);
+                                var optionhtml = '<option value="' +
+                                    data[i].TeacherId + '">' + data[i].TeacherName + '</option>';
+                                $("#teacherId").append(optionhtml);
                             });
                         }
                     });

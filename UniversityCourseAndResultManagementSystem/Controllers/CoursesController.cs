@@ -171,7 +171,6 @@ namespace UniversityCourseAndResultManagementSystem.Models
             var courseStatics = (from c in db.Courses join t in db.Teachers on c.TeacherId equals t.TeacherId select new { CourseCode = c.CourseCode, CourseName = c.CourseName, SemesterId = c.SemesterId, TeacherName = t.TeacherName })
                                 .Concat(from d in db.Courses select new { CourseCode = d.CourseCode, CourseName = d.CourseName, SemesterId = d.SemesterId, TeacherName = "Not Yet Assigned" });
             return Json(courseStatics,JsonRequestBehavior.AllowGet);
-                                
         }
     }
 }

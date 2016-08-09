@@ -165,7 +165,8 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
 
         public ActionResult SaveResult()
         {
-            ViewBag.StudentList = new SelectList(db.Students,  "StudentId","RegNo");
+            //ViewBag.StudentList = new SelectList(db.Students,  "StudentId","RegNo");
+            ViewBag.Departments = new SelectList(db.Departments,"DeptId","DeptName");
             ViewBag.CourseList = new SelectList(db.Courses, "CourseId", "CourseName");
             ViewBag.GradeList = new SelectList(new[]
             {
@@ -193,5 +194,16 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             return View();
         }
 
+        public JsonResult GetStudentByDeptId(int deptId)
+        {
+            var students = db.Students.Where(aStudent => aStudent.DeptId == deptId);
+            return Json(students, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetStudentByStudentId(int studentId)
+        {
+            var students = db.Students.Find(studentId);
+            return Json(students, JsonRequestBehavior.AllowGet);
+        }
     }
 }

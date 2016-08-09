@@ -118,15 +118,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\GetStudentByStudentIdController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608080930597_Initial Commit.cs" />
-    <Compile Include="Migrations\201608080930597_Initial Commit.Designer.cs">
-      <DependentUpon>201608080930597_Initial Commit.cs</DependentUpon>
+    <Compile Include="Migrations\201608091648350_Init.cs" />
+    <Compile Include="Migrations\201608091648350_Init.Designer.cs">
+      <DependentUpon>201608091648350_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
@@ -1624,8 +1625,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608080930597_Initial Commit.resx">
-      <DependentUpon>201608080930597_Initial Commit.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608091648350_Init.resx">
+      <DependentUpon>201608091648350_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
