@@ -28,8 +28,10 @@
                 <select id="student" class="form-control">
                     <option value="0">--Select Student--</option>
                 </select>
-                @*@Html.DropDownList("StudentID", (SelectList) ViewBag.StudentList, "--Select Student--", htmlAttributes: new {@class = "form-control",id="student"})
-                @Html.ValidationMessageFor(model => model.StudentId, "", new {@class = "text-danger"})*@
+                <br/>
+                @Html.DropDownList("student", (SelectList)ViewBag.DeptId, "---Select Depatment---", htmlAttributes: new { @class = "form-control" })
+                @*@Html.DropDownList("StudentID", (SelectList) ViewBag.StudentList, "--Select Student--", htmlAttributes: new {@class = "form-control",id="student"})*@
+                @Html.ValidationMessageFor(model => model.StudentId, "", new {@class = "text-danger"})
             </div>
         </div>
 
