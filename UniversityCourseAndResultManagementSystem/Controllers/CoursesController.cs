@@ -154,12 +154,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
             return Json(false, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetCourseByDeptId(int deptId)
-        {
-            var courses = db.Courses.Where(aCourse => aCourse.DeptId == deptId);
-            return Json(courses,JsonRequestBehavior.AllowGet);
-        }
-
+      
         public ActionResult CourseStatics()
         {
             ViewBag.Departments = new SelectList(db.Departments, "DeptId", "DeptName");
@@ -171,6 +166,12 @@ namespace UniversityCourseAndResultManagementSystem.Models
             var courseStatics = (from c in db.Courses join t in db.Teachers on c.TeacherId equals t.TeacherId select new { CourseCode = c.CourseCode, CourseName = c.CourseName, SemesterId = c.SemesterId, TeacherName = t.TeacherName })
                                 .Concat(from d in db.Courses select new { CourseCode = d.CourseCode, CourseName = d.CourseName, SemesterId = d.SemesterId, TeacherName = "Not Yet Assigned" });
             return Json(courseStatics,JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetCourseByDeptId(int deptId)
+        {
+            var courses = db.Courses.Where(aCourse => aCourse.DeptId == deptId);
+            return Json(courses, JsonRequestBehavior.AllowGet);
         }
     }
 }
