@@ -15,7 +15,8 @@
         <p>
             @Html.ActionLink("Create New", "Create")
         </p>
-        <div class="alert alert-success" role="alert">Total Student: {{CountAllStudents()}}</div>
+        @*{{CountAllStudents()}}*@
+        <div class="alert alert-success" role="alert" id="totalStudent">Total Student: </div>
         <table id="example" class="display table table-condensed table-bordered table-striped table-hover table-responsive">
             <thead>
                 <tr>
@@ -89,6 +90,8 @@
                 }
             </tbody>
         </table>
+        @*<label id="stName" ng-repeat="input in allStudents></label>*@
+        
     </div>
 </div>
 
@@ -101,7 +104,7 @@
 @section scripts
 {
     <script>
-        var teacherListApp = angular.module("StudentListApp", []);
+        @*var teacherListApp = angular.module("StudentListApp", []);
         teacherListApp.controller("StudentController", function($scope,$http) {
             $scope.allStudents = [];
             $http.get('@Url.Action("GetAllStudents", "Students")').success(function(data) {
@@ -111,11 +114,31 @@
             $scope.CountAllStudents = function() {
                 var countStudent = 0;
                 angular.forEach($scope.allStudents, function (aStudent) {
-                    countStudent++;
+                    countStudent++;                  
+                        var a = '<span>'+allStudents.StudentName+'</span>';
+                        $("#stName").append(a);                   
                 });
                 return countStudent;
             }
 
+        });*@
+
+        $(document).ready(function () {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetAllStudents", "Students")',
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(jsnFormatData),
+                        dataType: "json",                        
+                        success: function (data) {
+                            var a = 0;
+                            $.each(data, function (i) {
+                                a++;
+                              });
+                            $("#totalStudent").val(a);
+                        }
+                    });
+                  return false;
         });
     </script>
 }

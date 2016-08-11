@@ -125,9 +125,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608091648350_Init.cs" />
-    <Compile Include="Migrations\201608091648350_Init.Designer.cs">
-      <DependentUpon>201608091648350_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201608110928350_InitComit.cs" />
+    <Compile Include="Migrations\201608110928350_InitComit.Designer.cs">
+      <DependentUpon>201608110928350_InitComit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
@@ -1616,6 +1616,7 @@
     <Content Include="Views\Courses\CourseStatics.cshtml" />
     <None Include="Views\Students\SaveResult.cshtml" />
     <Content Include="Views\Teachers\AssignCourse.cshtml" />
+    <Content Include="Views\Students\ViewResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1625,8 +1626,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608091648350_Init.resx">
-      <DependentUpon>201608091648350_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608110928350_InitComit.resx">
+      <DependentUpon>201608110928350_InitComit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

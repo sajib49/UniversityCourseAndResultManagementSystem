@@ -10,56 +10,58 @@
 
 @using (Html.BeginForm())
 {
-    
+
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        @Html.ValidationSummary(true,"",new{@class="text-danger"} )
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             <label class="control-label col-md-2">Department</label>
             <div class="col-md-10">
+
                 @Html.DropDownList("DepartmentId", (SelectList)ViewBag.Departments, "--Select Department--", htmlAttributes: new { @class = "form-control", id = "department" })
                 @*@Html.ValidationMessageFor(m => m.DepartmentId, "", new {@class = "text-danger"})*@
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.StudentId, htmlAttributes: new {@class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.StudentId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <select id="student" class="form-control">
                     <option value="0">--Select Student--</option>
                 </select>
-                <br/>
-                @Html.DropDownList("student", (SelectList)ViewBag.DeptId, "---Select Depatment---", htmlAttributes: new { @class = "form-control" })
+                <br />
+                @*@Html.DropDownList("student", (SelectList)ViewBag.DeptId, "---Select Depatment---", htmlAttributes: new { @class = "form-control" })*@
                 @*@Html.DropDownList("StudentID", (SelectList) ViewBag.StudentList, "--Select Student--", htmlAttributes: new {@class = "form-control",id="student"})*@
-                @Html.ValidationMessageFor(model => model.StudentId, "", new {@class = "text-danger"})
+                @Html.ValidationMessageFor(model => model.StudentId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <label class="control-label col-md-2">Name</label>
             <div class="col-md-10">
-                <input type="text"  id="studentName" readonly class="form-control"/>
+                <input type="text" id="studentName" readonly class="form-control" />
             </div>
         </div>
 
         <div class="form-group">
             <label class="control-label col-md-2">Email</label>
             <div class="col-md-10">
-                <input type="text"  id="studentEmail"  readonly class="form-control" />
+                <input type="text" id="studentEmail" readonly class="form-control" />
             </div>
         </div>
 
         <div class="form-group">
             <label class="control-label col-md-2">Department</label>
             <div class="col-md-10">
-                <input type="text"  id="studentDepartment" readonly class="form-control" />
+                <input type="text" id="studentDepartment" readonly class="form-control" />
             </div>
         </div>
-       
+
         <div class="form-group">
             @Html.LabelFor(model => model.CourseId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-               @* @Html.DropDownList("course", "--Select Course--", htmlAttributes: new { @class = "form-control" })*@
+                @* @Html.DropDownList("course", "--Select Course--", htmlAttributes: new { @class = "form-control" })*@
+                <br/>
                 <select class="form-control" id="course">
                     <option value="0">--Select Course--</option>
                 </select>
@@ -69,10 +71,10 @@
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Grade, htmlAttributes: new {@class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.Grade, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Grade", (SelectList) ViewBag.GradeList, "--Select Grade--", htmlAttributes: new {@class = "form-control"})
-                @Html.ValidationMessageFor(model => model.Grade, "", new {@class = "text-danger"})
+                @Html.DropDownList("Grade", (SelectList)ViewBag.GradeList, "--Select Grade--", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Grade, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -89,7 +91,7 @@
 @section scripts
 {
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $("#department").change(function () {
                 var deptId = $("#department").val();
                 var jsnFormatData = { deptId: deptId };
@@ -150,10 +152,10 @@
                         dataType: "json",
 
                         success: function (data) {
-                           $("#studentName").val(data.StudentName);
-                           $("#studentEmail").val(data.Email);
-                           $("#studentDepartment").val(data.ContactNo);
-                           
+                            $("#studentName").val(data.StudentName);
+                            $("#studentEmail").val(data.Email);
+                            $("#studentDepartment").val(data.ContactNo);
+
                         }
                     });
                 }

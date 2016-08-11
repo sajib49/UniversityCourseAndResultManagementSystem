@@ -138,14 +138,14 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
 
         public JsonResult StudentEmailExits(string email)
         {
@@ -200,10 +200,16 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             return Json(students, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetStudentByStudentId(int studentId)
+        public JsonResult GetStudentByStudentId(int studentId)
         {
-            var students = db.Students.Find(studentId);
+            var students = db.Students.Where(aStudent => aStudent.StudentId == studentId);
             return Json(students, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ViewResult()
+        {
+            ViewBag.Departments = new SelectList(db.Departments,"DeptId","DeptName");
+            return View();
         }
     }
 }
