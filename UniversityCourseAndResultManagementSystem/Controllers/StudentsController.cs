@@ -17,6 +17,7 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
         // GET: Students
         public ActionResult Index()
         {
+
             var students = db.Students.Include(s => s.Department);
             return View(students.ToList());
         }
@@ -210,6 +211,19 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
         {
             ViewBag.Departments = new SelectList(db.Departments,"DeptId","DeptName");
             return View();
+        }
+
+        public JsonResult GetResultByStudentId(int studentId)
+        {
+                        //var courseStatics = (from c in db.Courses join t in db.Teachers on c.TeacherId equals t.TeacherId select new { CourseCode = c.CourseCode, CourseName = c.CourseName, SemesterId = c.SemesterId, TeacherName = t.TeacherName })
+                        //        .Concat(from d in db.Courses select new { CourseCode = d.CourseCode, CourseName = d.CourseName, SemesterId = d.SemesterId, TeacherName = "Not Yet Assigned" });
+            var results = from result in db.Results
+                join student in db.Students on result.StudentId equals student.StudentId
+                join course in db.Courses on result.CourseId equals course.CourseId
+                where result.StudentId == studentId
+                select new {CourseCode = course.CourseCode,CourseName=course.CourseName,Grade=result.Grade};
+
+            return Json(results, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -25,9 +25,9 @@ namespace UniversityCourseAndResultManagementSystem.Models
         [Required(ErrorMessage = "Please Select Grade")]
         public string Grade { get; set; }
 
-        //[ForeignKey("StudentId")]
+        
         public virtual Student Student { get; set; }
-        //[ForeignKey("CourseId")]
+        
         public virtual Course Course { get; set; }
     }
 }
