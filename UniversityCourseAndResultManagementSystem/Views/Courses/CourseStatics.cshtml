@@ -16,26 +16,26 @@
         <div class="form-group">
             <label class="control-label col-md-2">Department</label>
             <div class="col-md-10">
-                @Html.DropDownListFor(m => m.DeptId, (SelectList)ViewBag.Departments, "--Select Department--", htmlAttributes: new { @class = "form-control", id = "department" })
+                @Html.DropDownListFor(m => m.DeptId, (SelectList)ViewBag.Departments, "--Select Department--", htmlAttributes: new { @class = "form-control"})
                 @Html.ValidationMessageFor(m => m.DeptId, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
 
-     <table id="example" class="display" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>Code</th>
-                    <th>Name/Title</th>
-                    <th>Semester</th>
-                    <th>Assigned To</th>
-                </tr>
-            </thead>
+    <table id="example" class="display" cellspacing="0">
+        <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name/Title</th>
+            <th>Semester</th>
+            <th>Assigned To</th>
+        </tr>
+        </thead>
 
-            <tbody id="CourseStatics">
-                                              
-            </tbody>
-        </table>
+        <tbody id="CourseStatics">
+
+        </tbody>
+    </table>
 
 }
 
@@ -43,8 +43,8 @@
 {
     <script>
         $(document).ready(function () {
-            $("#department").change(function () {
-                var deptId = $("#department").val();
+            $("#DeptId").change(function () {
+                var deptId = $("#DeptId").val();
                 var jsnFormatData = { deptId: deptId };
                 if (deptId != 0) {
                     $.ajax({
@@ -55,20 +55,18 @@
                         dataType: "json",
 
                         success: function (data) {
+                            $("#CourseStatics").empty();
                             $.each(data, function (i) {
-                                $("#CourseStatics").empty();
                                 var optionhtml = '<tr><td>' + data[i].CourseCode + '</td> <td>'
-                                                  + data[i].CourseCode + '</td><td>'
-                                                  + data[i].CourseName + '</td><td>'
-                                                  + data[i].SemesterID + '</td><td>'
-                                                  + data[i].TeacherName + '</td></tr>'
+                                                 + data[i].CourseName + '</td><td>'
+                                                  + data[i].SemesterId + '</td><td>'
+                                                  + data[i].TeacherName + '</td></tr>';
                                 $("#CourseStatics").append(optionhtml);
                             });
                         }
                     });
                 }
-                return
-                {
+                else {
                     $("#CourseStatics").empty();
                 }
 

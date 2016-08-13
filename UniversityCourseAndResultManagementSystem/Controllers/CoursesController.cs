@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -163,8 +164,11 @@ namespace UniversityCourseAndResultManagementSystem.Models
 
         public JsonResult GetCourseStaticsByDeptId(int deptId)
         {
-            var courseStatics = (from c in db.Courses join t in db.Teachers on c.TeacherId equals t.TeacherId select new { CourseCode = c.CourseCode, CourseName = c.CourseName, SemesterId = c.SemesterId, TeacherName = t.TeacherName })
-                                .Concat(from d in db.Courses.Where(aCourse=>aCourse.CourseId == null) select new { CourseCode = d.CourseCode, CourseName = d.CourseName, SemesterId = d.SemesterId, TeacherName = "Not Yet Assigned" });
+            var courseStatics = (from c in db.Courses join t in db.Teachers on c.TeacherId equals t.TeacherId 
+                                 select new { CourseCode = c.CourseCode, CourseName = c.CourseName, SemesterId = c.SemesterId,DeptId=c.DeptId, TeacherName = t.TeacherName })
+                                .Union(from d in db.Courses.Where(aCourse=>aCourse.TeacherId == null) 
+                                 select new { CourseCode = d.CourseCode, CourseName = d.CourseName, SemesterId = d.SemesterId, DeptId=d.DeptId,TeacherName = "Not Yet Assigned" })
+                                .Select(c =>new {c.DeptId,c.CourseCode,c.CourseName,c.SemesterId,c.TeacherName}).Where(d=>d.DeptId == deptId); 
             return Json(courseStatics,JsonRequestBehavior.AllowGet);
         }
 
