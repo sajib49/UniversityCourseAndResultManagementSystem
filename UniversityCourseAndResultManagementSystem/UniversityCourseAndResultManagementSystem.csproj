@@ -130,6 +130,7 @@
       <DependentUpon>201608110928350_InitComit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AllEnums.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Models\CourseAssign.cs" />

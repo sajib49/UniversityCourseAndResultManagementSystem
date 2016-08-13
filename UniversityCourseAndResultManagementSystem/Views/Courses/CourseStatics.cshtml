@@ -24,33 +24,16 @@
 
      <table id="example" class="display" cellspacing="0">
             <thead>
-            @*<tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Department.DeptCode)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Semester.SemesterName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CourseCode)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CourseName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Creadit)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    Action
-                </th>
-            </tr>*@
+                <tr>
+                    <th>Code</th>
+                    <th>Name/Title</th>
+                    <th>Semester</th>
+                    <th>Assigned To</th>
+                </tr>
             </thead>
 
-            <tbody>
-                                               
+            <tbody id="CourseStatics">
+                                              
             </tbody>
         </table>
 
@@ -73,13 +56,22 @@
 
                         success: function (data) {
                             $.each(data, function (i) {
-                                var optionhtml = '<option value="' +
-                                    data[i].TeacherId + '">' + data[i].TeacherName + '</option>';
-                                $("#teacherId").append(optionhtml);
+                                $("#CourseStatics").empty();
+                                var optionhtml = '<tr><td>' + data[i].CourseCode + '</td> <td>'
+                                                  + data[i].CourseCode + '</td><td>'
+                                                  + data[i].CourseName + '</td><td>'
+                                                  + data[i].SemesterID + '</td><td>'
+                                                  + data[i].TeacherName + '</td></tr>'
+                                $("#CourseStatics").append(optionhtml);
                             });
                         }
                     });
                 }
+                return
+                {
+                    $("#CourseStatics").empty();
+                }
+
                return false;
             });
         });
