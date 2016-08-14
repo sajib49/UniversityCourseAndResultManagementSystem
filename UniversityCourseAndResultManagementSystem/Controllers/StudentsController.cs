@@ -139,16 +139,7 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             return RedirectToAction("Index");
         }
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
-
-        public JsonResult StudentEmailExits(string email)
+            public JsonResult StudentEmailExits(string email)
         {
             var aStudent = db.Students.FirstOrDefault(x => x.Email == email);
             if (aStudent == null)
