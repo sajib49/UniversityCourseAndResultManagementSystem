@@ -1616,6 +1616,7 @@
     <Content Include="Views\Students\Index.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Courses\CourseStatics.cshtml" />
+    <Content Include="Views\Courses\UnassignCourses.cshtml" />
     <None Include="Views\Students\SaveResult.cshtml" />
     <Content Include="Views\Teachers\AssignCourse.cshtml" />
     <Content Include="Views\Students\ViewResult.cshtml" />
