@@ -42,25 +42,25 @@
 @section scripts
 {
     <script>
-        $(document).ready(function () {
-            $("#DeptId").change(function () {
-                var deptId = $("#DeptId").val();
-                var jsnFormatData = { deptId: deptId };
-                if (deptId != 0) {
-                    $.ajax({
-                        type: "POST",
-                        url: '@Url.Action("GetCourseStaticsByDeptId", "Courses")',
+    $(document).ready(function () {
+        $("#DeptId").change(function () {
+            var deptId = $("#DeptId").val();
+            var jsnFormatData = { deptId: deptId };
+            if (deptId != 0) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetCourseStaticsByDeptId", "Courses")',
                         contentType: "application/json; charset=utf-8",
                         data: JSON.stringify(jsnFormatData),
                         dataType: "json",
-
+                        
                         success: function (data) {
                             $("#CourseStatics").empty();
                             $.each(data, function (i) {
                                 var optionhtml = '<tr><td>' + data[i].CourseCode + '</td> <td>'
-                                                 + data[i].CourseName + '</td><td>'
-                                                  + data[i].SemesterId + '</td><td>'
-                                                  + data[i].TeacherName + '</td></tr>';
+                                    + data[i].CourseName + '</td><td>'
+                                    + data[i].Semester + '</td><td>'
+                                    + data[i].TeacherName + '</td></tr>';
                                 $("#CourseStatics").append(optionhtml);
                             });
                         }

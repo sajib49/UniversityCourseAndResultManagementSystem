@@ -137,6 +137,7 @@
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Designation.cs" />
     <Compile Include="Models\EnrollCourse.cs" />
+    <Compile Include="Models\Enums\Semester.cs" />
     <Compile Include="Models\ProjectDb.cs" />
     <Compile Include="Models\Result.cs" />
     <Compile Include="Models\Semester.cs" />

@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
-using System.IO;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
+using UniversityCourseAndResultManagementSystem.Models;
 
-namespace UniversityCourseAndResultManagementSystem.Models
+namespace UniversityCourseAndResultManagementSystem.Controllers
 {
     public class CoursesController : Controller
     {
@@ -164,11 +160,13 @@ namespace UniversityCourseAndResultManagementSystem.Models
 
         public JsonResult GetCourseStaticsByDeptId(int deptId)
         {
-            var courseStatics = (from c in db.Courses join t in db.Teachers on c.TeacherId equals t.TeacherId 
-                                 select new { CourseCode = c.CourseCode, CourseName = c.CourseName, SemesterId = c.SemesterId,DeptId=c.DeptId, TeacherName = t.TeacherName })
-                                .Union(from d in db.Courses.Where(aCourse=>aCourse.TeacherId == null) 
-                                 select new { CourseCode = d.CourseCode, CourseName = d.CourseName, SemesterId = d.SemesterId, DeptId=d.DeptId,TeacherName = "Not Yet Assigned" })
-                                .Select(c =>new {c.DeptId,c.CourseCode,c.CourseName,c.SemesterId,c.TeacherName}).Where(d=>d.DeptId == deptId); 
+            var courseStatics = (from c in db.Courses join t in db.Teachers on c.TeacherId equals t.TeacherId
+                                 select new {c.CourseCode, c.CourseName, c.SemesterId, c.DeptId, t.TeacherName })
+                                .Union(from d in db.Courses.Where(aCourse=>aCourse.TeacherId == null)
+                                       select new {d.CourseCode, d.CourseName, d.SemesterId, d.DeptId, TeacherName = "Not Yet Assigned" })
+                                .Where(d => d.DeptId == deptId).ToList()
+                                .Select(c => new { c.DeptId, c.CourseCode, c.CourseName, Semester = Enum.GetName(typeof(AllEnums.Semester),c.SemesterId), c.TeacherName});
+
             return Json(courseStatics,JsonRequestBehavior.AllowGet);
         }
 
