@@ -175,5 +175,10 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             var courses = db.Courses.Where(aCourse => aCourse.DeptId == deptId);
             return Json(courses, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult UnassignCourses()
+        {
+            return View();
+        }
     }
 }
