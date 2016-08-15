@@ -49,7 +49,7 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
         [ValidateInput(false)]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CourseId,CourseCode,CourseName,Creadit,Description,DeptId,SemesterId")] Course course)
+        public ActionResult Create([Bind(Include = "CourseId,CourseCode,CourseName,Creadit,Description,DeptId,SemesterId,TeacherId")] Course course)
         {
             if (ModelState.IsValid)
             {
